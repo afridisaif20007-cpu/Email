@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Question For You</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #b30059;
+    }
+
+    #questionMark {
+        font-size: 6rem;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    #proposal {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #buttons {
+        position: relative;
+        width: 300px;
+        height: 150px;
+    }
+
+    button {
+        font-size: 1.2rem;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #yesBtn {
+        background: #ff4d88;
+        color: white;
+    }
+
+    #noBtn {
+        background: #999;
+        color: white;
+        font-size: 0.6rem;
+        padding: 3px 6px;
+        position: absolute;
+        left: 180px;
+        top: 70px;
+    }
+
+    #final {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .rose {
+        font-size: 5rem;
+        animation: pop 1s ease-out forwards;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<div id="intro">
+    <h1>I have a question for you</h1>
+    <div id="questionMark">❓</div>
+    <p>(Click it 😏)</p>
+</div>
+
+<div id="proposal">
+    <h1>Humairaa, would you be my Valentine?</h1>
+    <div id="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No</button>
+    </div>
+</div>
+
+<div id="final">
+    <div class="rose">🌹</div>
+    <h1>Seni seviyorum, sevgilim</h1>
+</div>
+
+<script>
+    let clicks = 0;
+    const questionMark = document.getElementById("questionMark");
+    const intro = document.getElementById("intro");
+    const proposal = document.getElementById("proposal");
+    const final = document.getElementById("final");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    questionMark.addEventListener("click", () => {
+        clicks++;
+        if (clicks >= 8) {
+            intro.style.display = "none";
+            proposal.style.display = "flex";
+        }
+    });
+
+    noBtn.addEventListener("mouseenter", () => {
+        const maxX = 260;
+        const maxY = 120;
+        noBtn.style.left = Math.random() * maxX + "px";
+        noBtn.style.top = Math.random() * maxY + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+        proposal.style.display = "none";
+        final.style.display = "flex";
+    });
+</script>
+
+</body>
+</html>
